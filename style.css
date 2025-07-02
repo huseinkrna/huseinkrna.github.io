@@ -1,0 +1,74 @@
+/* Mengatur tampilan dasar halaman */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5; /* Warna latar belakang abu-abu muda */
+    color: #1c1e21; /* Warna teks gelap */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Styling untuk foto profil */
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Membuat gambar menjadi bulat */
+    object-fit: cover;
+    border: 5px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Styling untuk nama */
+.profile-name {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Styling untuk bio */
+.profile-bio {
+    font-size: 1em;
+    color: #606770;
+    margin-top: 8px;
+    margin-bottom: 30px;
+    max-width: 500px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Wadah untuk tombol link */
+.links-container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Jarak antar tombol */
+}
+
+/* Styling untuk tombol link */
+.link-button {
+    background-color: #ffffff;
+    color: #1877f2; /* Warna biru khas */
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #dddfe2;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Efek saat kursor mouse di atas tombol */
+.link-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: #f8f9fa;
+}
