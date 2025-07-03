@@ -1,7 +1,7 @@
 /* Mengatur tampilan dasar halaman */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f2f5; /* Warna latar belakang abu-abu muda */
+    background-color: #456eaa; /* Warna latar belakang abu-abu muda */
     color: #1c1e21; /* Warna teks gelap */
     display: flex;
     flex-direction: column;
