@@ -1,7 +1,7 @@
 /* Mengatur tampilan dasar halaman */
 body {
     font-family: Arial, sans-serif;
-    background-image: url(/foto/Poltek\ nuklir.jpg);
+    background-image: url(/foto/polnuk.png);
     color: #1c1e21; /* Warna teks gelap */
     display: flex;
     flex-direction: column;
