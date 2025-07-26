@@ -1,25 +1,19 @@
 /* --- PERUBAHAN UTAMA ADA DI SINI --- */
-
 body {
     font-family: Arial, sans-serif;
-    color: #ffffff; /* Warna teks utama diubah menjadi putih */
+    color: #ffffff;
     margin: 0;
     min-height: 100vh;
-    
-    /* Menyiapkan latar belakang gambar */
-    background-image: url(/foto/polnuk.png); /* Pastikan path ini benar */
-    background-size: cover; /* Membuat gambar menutupi seluruh layar */
+    background-image: url(/foto/polnuk.png);
+    background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Latar belakang tidak ikut scroll */
-    position: relative; /* Diperlukan untuk lapisan overlay */
-    
-    /* Mengatur agar konten tetap di tengah */
+    background-attachment: fixed;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Menambahkan lapisan filter gelap di atas background */
 body::before {
     content: '';
     position: absolute;
@@ -27,14 +21,13 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* HITAM dengan transparansi 60%. Atur angka terakhir (0.6) untuk tingkat kegelapan */
-    z-index: 1; /* Lapisan ini ada di antara background dan konten */
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
 }
 
-/* Wadah untuk semua konten agar berada di atas lapisan gelap */
 .content-wrapper {
     position: relative;
-    z-index: 2; /* Pastikan z-index lebih tinggi dari body::before */
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,30 +37,27 @@ body::before {
 }
 
 /* --- STYLING KONTEN (PENYESUAIAN KECIL) --- */
-
-/* Styling untuk foto profil */
 .profile-picture {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
     border: 5px solid #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Bayangan lebih terlihat di background gelap */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     margin-bottom: 20px;
 }
 
-/* Styling untuk nama */
 .profile-name {
     font-size: 2.2em;
     font-weight: bold;
     margin: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Efek bayangan agar teks lebih menonjol */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    min-height: 50px; /* Memberi ruang agar layout tidak berantakan saat teks diketik */
 }
 
-/* Styling untuk bio */
 .profile-bio {
     font-size: 1.1em;
-    color: #e0e0e0; /* Warna abu-abu terang agar tidak terlalu mencolok */
+    color: #e0e0e0;
     margin-top: 8px;
     margin-bottom: 30px;
     max-width: 500px;
@@ -75,7 +65,6 @@ body::before {
     padding: 0 20px;
 }
 
-/* Wadah untuk tombol link */
 .links-container {
     width: 100%;
     max-width: 600px;
@@ -86,13 +75,10 @@ body::before {
 }
 
 /* --- PERUBAHAN GAYA TOMBOL (GHOST BUTTON) --- */
-
 .link-button {
-    /* Mengubah menjadi 'Ghost Button' */
     background-color: transparent;
     color: #ffffff;
-    border: 2px solid #ffffff; /* Garis tepi putih */
-    
+    border: 2px solid #ffffff;
     text-decoration: none;
     font-size: 1.2em;
     font-weight: bold;
@@ -100,14 +86,92 @@ body::before {
     border-radius: 8px;
     width: 80%;
     text-align: center;
-    box-shadow: none; /* Bayangan tidak diperlukan untuk ghost button */
-    transition: all 0.3s ease; /* Transisi lebih halus */
+    box-shadow: none;
+    transition: all 0.3s ease;
 }
 
-/* Efek saat kursor mouse di atas tombol */
 .link-button:hover {
-    background-color: #ffffff; /* Latar belakang menjadi putih */
-    color: #1c1e21; /* Warna teks menjadi gelap */
-    transform: translateY(-3px) scale(1.03); /* Sedikit membesar saat disentuh */
+    background-color: #ffffff;
+    color: #1c1e21;
+    transform: translateY(-3px) scale(1.03);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* --- DITAMBAHKAN: CSS UNTUK FITUR JAVASCRIPT --- */
+/* Styling untuk Modal (Pop-up) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    color: #1c1e21;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Styling untuk kontainer proyek GitHub */
+.projects-container {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.project-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: left;
+    transition: background-color 0.3s;
+}
+
+.project-card:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.project-card h3 {
+    margin: 0 0 5px 0;
+}
+
+.project-card a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project-card p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #e0e0e0;
 }
