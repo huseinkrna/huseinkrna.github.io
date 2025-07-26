@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const projectCard = `
                         <div class="project-card">
                             <h3><a href="${project.html_url}" target="_blank">${project.name}</a></h3>
-                            <p>${project.description || 'Tidak ada deskripsi.'}</p>
+                            <p>${project.description || 'Web Portofolio'}</p>
                         </div>
                     `;
                     projectsContainer.innerHTML += projectCard;
