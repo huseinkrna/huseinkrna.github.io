@@ -73,18 +73,36 @@ h1, h2, h3 {
 h1 { font-size: 1.8rem; }
 h2 { font-size: 1.4rem; border-bottom: 1px dashed #30363d; padding-bottom: 10px; margin-top: 30px;}
 
-/* 7. Link/Tombol */
+/* 7. Link/Tombol (CYBER BUTTON STYLE) */
 a {
-    color: #58a6ff;
+    display: inline-block;          /* Supaya bentuknya kotak, bukan teks biasa */
+    position: relative;
     text-decoration: none;
+    color: var(--accent-color);     /* Warna Teks Hijau */
+    border: 1px solid var(--accent-color); /* Garis pinggir hijau */
+    padding: 10px 20px;             /* Jarak dalam tombol (AtasBawah KiriKanan) */
+    margin: 10px 5px;               /* Jarak antar tombol */
+    border-radius: 4px;             /* Sudut sedikit tumpul */
+    transition: all 0.3s ease;      /* Animasi perubahan halus */
+    background: rgba(0, 255, 65, 0.05); /* Background hijau super tipis */
     font-weight: bold;
-    margin: 0 10px;
-    display: inline-block;
+    letter-spacing: 1px;            /* Jarak antar huruf */
+    text-transform: uppercase;      /* Huruf kapital semua */
 }
 
+/* Efek pas Kursor Nempel (Hover) */
 a:hover {
-    text-decoration: underline;
-    text-shadow: 0 0 8px rgba(88, 166, 255, 0.6);
+    background-color: var(--accent-color); /* Latar jadi hijau full */
+    color: #0d1117;                 /* Teks jadi hitam biar kontras */
+    box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-color); /* Efek NEON GLOW */
+    transform: translateY(-3px);    /* Tombol melayang naik dikit */
+    cursor: pointer;
+}
+
+/* Efek Klik (Active) */
+a:active {
+    transform: translateY(1px);     /* Efek mendem pas diklik */
+    box-shadow: 0 0 5px var(--accent-color);
 }
 
 /* List Proyek */
