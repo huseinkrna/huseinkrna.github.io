@@ -1,19 +1,177 @@
-/* Import font retro ala coding */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
-:root {
-    --bg-color: #0d1117;       /* Hitam agak biru (GitHub Dark) */
-    --text-primary: #00ff41;   /* Hijau Hacker/Phosphor */
-    --text-secondary: #03a9f4; /* Biru Elektrik */
-    --panel-bg: #161b22;       /* Warna panel instrumen */
+/* --- PERUBAHAN UTAMA ADA DI SINI --- */
+body {
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    margin: 0;
+    min-height: 100vh;
+    background-image: url(/foto/polnuk.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    font-family: 'VT323', monospace; /* Font kotak-kotak retro */
-    font-size: 1.2rem;
-    background-image: linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
-    background-size: 20px 20px; /* Bikin efek kertas millimeter block / grid */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+}
+
+/* --- STYLING KONTEN (PENYESUAIAN KECIL) --- */
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+.profile-name {
+    font-size: 2.2em;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    min-height: 50px; /* Memberi ruang agar layout tidak berantakan saat teks diketik */
+}
+
+.profile-bio {
+    font-size: 1.1em;
+    color: #e0e0e0;
+    margin-top: 8px;
+    margin-bottom: 30px;
+    max-width: 500px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.links-container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* --- PERUBAHAN GAYA TOMBOL (GHOST BUTTON) --- */
+.link-button {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 8px;
+    width: 80%;
+    text-align: center;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.link-button:hover {
+    background-color: #ffffff;
+    color: #1c1e21;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* --- DITAMBAHKAN: CSS UNTUK FITUR JAVASCRIPT --- */
+/* Styling untuk Modal (Pop-up) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    color: #1c1e21;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Styling untuk kontainer proyek GitHub */
+.projects-container {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.project-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: left;
+    transition: background-color 0.3s;
+}
+
+.project-card:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.project-card h3 {
+    margin: 0 0 5px 0;
+}
+
+.project-card a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project-card p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #e0e0e0;
 }
