@@ -22,7 +22,28 @@
             </label>
         </div>
         <p class="profile-bio">Mahasiswa Elektronika Instrumentasi, tukang cooding amatir, desainer grafis canva, serta ahli MC dan Public Speaking, dan Barista Kopi Pemula.</p>
+<div class="panel-container">
+    <div class="panel-header">
+        <span class="status-light blink"></span>
+        CAFFEINE INJECTOR [V60]
+    </div>
+    
+    <div class="gauge-wrapper">
+        <div class="digital-group">
+            <label>COFFEE (GR)</label>
+            <input type="number" id="coffeeInput" value="15" min="0">
+        </div>
 
+        <div class="arrow">➤</div>
+
+        <div class="digital-group">
+            <label>WATER (ML)</label>
+            <div id="waterOutput" class="seven-segment">225</div>
+        </div>
+    </div>
+    
+    <div class="panel-footer">RATIO 1:15 // EXTRACTING...</div>
+</div>
         <div class="links-container">
             <a href="#" id="cv-button" class="link-button">
                 CV
@@ -118,6 +139,26 @@
             isRunning = false;
             ctx.clearRect(0, 0, width, height); // Hapus gambar gelombang
             body.classList.add('power-off'); // Bikin layar redup
+        }
+    });
+// 3. BARISTA CALCULATOR LOGIC
+    const coffeeInput = document.getElementById('coffeeInput');
+    const waterOutput = document.getElementById('waterOutput');
+    const statusLight = document.querySelector('.status-light');
+
+    coffeeInput.addEventListener('input', function() {
+        const coffee = parseFloat(this.value);
+        
+        if (!isNaN(coffee) && coffee > 0) {
+            // Rumus V60 Rasio 1:15
+            const water = coffee * 15; 
+            waterOutput.innerText = water;
+            
+            // Ubah lampu jadi hijau (Active)
+            statusLight.classList.add('active');
+        } else {
+            waterOutput.innerText = "0";
+            statusLight.classList.remove('active');
         }
     });
 </script>

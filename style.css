@@ -181,4 +181,95 @@ body.power-off {
 body.power-off canvas {
     display: none; /* Matikan osiloskop */
 }
+/* --- BARISTA PANEL STYLE --- */
+.panel-container {
+    background: #161b22;
+    border: 2px solid #30363d;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 400px; /* Biar gak kegedean */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    font-family: 'Fira Code', monospace;
+}
+
+.panel-header {
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    color: #8b949e;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Lampu Indikator Kedip */
+.status-light {
+    width: 10px;
+    height: 10px;
+    background-color: #ff4436; /* Merah standby */
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 5px #ff4436;
+}
+
+.status-light.active {
+    background-color: #00ff41; /* Hijau aktif */
+    box-shadow: 0 0 8px #00ff41;
+}
+
+@keyframes blink { 50% { opacity: 0.5; } }
+.blink { animation: blink 1s infinite; }
+
+.gauge-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.digital-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.digital-group label {
+    font-size: 0.7rem;
+    color: #58a6ff;
+}
+
+/* Kotak Input & Output Digital */
+input[type="number"], .seven-segment {
+    background: #000;
+    color: #00ff41; /* Angka Hijau */
+    border: 1px solid #30363d;
+    font-family: 'Courier New', Courier, monospace; /* Font kaku */
+    font-size: 1.5rem;
+    padding: 10px;
+    width: 100px;
+    text-align: right;
+    border-radius: 4px;
+    box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+/*ilangin panah di input number*/
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.arrow {
+    color: #30363d;
+    font-size: 1.5rem;
+}
+
+.panel-footer {
+    margin-top: 15px;
+    font-size: 0.6rem;
+    color: #484f58;
+    text-align: right;
+    border-top: 1px solid #30363d;
+    padding-top: 5px;
+}
 }
