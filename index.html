@@ -13,20 +13,9 @@
         <img src="foto/husein pdh.png" alt="Foto Profil" class="profile-picture">
 
         <h1 class="profile-name" id="profile-name-typed"></h1>
-        <div class="control-panel">
-            <div class="switch-label">SYSTEM POWER</div>
-            <label class="rocker">
-                <input type="checkbox" id="power-switch" checked>
-                <span class="switch-left">ON</span>
-                <span class="switch-right">OFF</span>
-            </label>
-        </div>
+        
         <p class="profile-bio">Mahasiswa Elektronika Instrumentasi, tukang cooding amatir, desainer grafis canva, serta ahli MC dan Public Speaking, dan Barista Kopi Pemula.</p>
-<div class="panel-container">
-    <div class="panel-header">
-        <span class="status-light blink"></span>
-        CAFFEINE INJECTOR [V60]
-    </div>
+
     
     <div class="gauge-wrapper">
         <div class="digital-group">
@@ -79,88 +68,51 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="script.js"></script> 
 
-   <script>
-    // 1. Setup Osiloskop
-    const canvas = document.getElementById('oscilloscope');
-    const ctx = canvas.getContext('2d');
-    let width, height;
-    let phase = 0;
-    let isRunning = true; // Status nyala/mati
+  <canvas id="oscilloscope" style="position:fixed; bottom:0; left:0; width:100%; height:150px; z-index:-1; pointer-events:none; opacity:0.6;"></canvas>
 
-    function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = 150;
-    }
-    window.addEventListener('resize', resize);
-    resize();
+<script>
+    (function() {
+        const canvas = document.getElementById('oscilloscope');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let phase = 0;
 
-    function draw() {
-        if (!isRunning) return; // Kalau mati, stop gambar
-
-        ctx.clearRect(0, 0, width, height);
-        
-        // Garis Axis
-        ctx.beginPath();
-        ctx.strokeStyle = 'rgba(48, 54, 61, 0.5)'; 
-        ctx.moveTo(0, height/2);
-        ctx.lineTo(width, height/2);
-        ctx.stroke();
-
-        // Gelombang Sinus
-        ctx.beginPath();
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = '#00ff41';
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = '#00ff41';
-
-        for (let x = 0; x < width; x++) {
-            const y = height/2 + Math.sin(x * 0.02 + phase) * 40;
-            ctx.lineTo(x, y);
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = 150;
         }
-        ctx.stroke();
-        
-        phase += 0.15;
-        requestAnimationFrame(draw);
-    }
-    draw(); // Mulai animasi
+        window.addEventListener('resize', resize);
+        resize();
 
-    // 2. Logika Saklar (Switch Logic)
-    const powerSwitch = document.getElementById('power-switch');
-    const body = document.body;
-
-    powerSwitch.addEventListener('change', function() {
-        if(this.checked) {
-            // Kalau ON
-            isRunning = true;
-            draw(); // Jalankan animasi lagi
-            body.classList.remove('power-off'); // Balikin warna
-        } else {
-            // Kalau OFF
-            isRunning = false;
-            ctx.clearRect(0, 0, width, height); // Hapus gambar gelombang
-            body.classList.add('power-off'); // Bikin layar redup
-        }
-    });
-// 3. BARISTA CALCULATOR LOGIC
-    const coffeeInput = document.getElementById('coffeeInput');
-    const waterOutput = document.getElementById('waterOutput');
-    const statusLight = document.querySelector('.status-light');
-
-    coffeeInput.addEventListener('input', function() {
-        const coffee = parseFloat(this.value);
-        
-        if (!isNaN(coffee) && coffee > 0) {
-            // Rumus V60 Rasio 1:15
-            const water = coffee * 15; 
-            waterOutput.innerText = water;
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
             
-            // Ubah lampu jadi hijau (Active)
-            statusLight.classList.add('active');
-        } else {
-            waterOutput.innerText = "0";
-            statusLight.classList.remove('active');
+            // Garis Axis Tengah
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(48, 54, 61, 0.5)'; 
+            ctx.moveTo(0, height/2);
+            ctx.lineTo(width, height/2);
+            ctx.stroke();
+
+            // Gelombang Sinus Hijau
+            ctx.beginPath();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#00ff41'; // Warna Hijau Elins
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = '#00ff41';
+
+            for (let x = 0; x < width; x++) {
+                // y = Amplitude * sin(Frequency * x + Phase)
+                const y = height/2 + Math.sin(x * 0.02 + phase) * 40;
+                ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            
+            phase += 0.15; // Kecepatan gerak
+            requestAnimationFrame(draw);
         }
-    });
+        draw(); // Langsung jalan
+    })();
 </script>
 </body>
 </html>
