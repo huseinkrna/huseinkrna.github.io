@@ -50,5 +50,52 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="script.js"></script> 
 
+    <canvas id="oscilloscope" style="position:fixed; bottom:0; left:0; width:100%; height:150px; z-index:-1; pointer-events:none; opacity:0.6;"></canvas>
+
+    <script>
+    (function() {
+        const canvas = document.getElementById('oscilloscope');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let phase = 0;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = 150;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Garis tengah (axis)
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(0, 255, 65, 0.2)'; 
+            ctx.moveTo(0, height/2);
+            ctx.lineTo(width, height/2);
+            ctx.stroke();
+
+            // Gelombang Sinus
+            ctx.beginPath();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#00ff41'; // Warna Hijau Terminal
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = '#00ff41'; // Efek Glow
+
+            for (let x = 0; x < width; x++) {
+                // Rumus: y = Amplitude * sin(Frequency * x + Phase)
+                // Ini bikin gelombang yang jalan terus
+                const y = height/2 + Math.sin(x * 0.02 + phase) * 40;
+                ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            
+            phase += 0.15; // Kecepatan gerak gelombang
+            requestAnimationFrame(draw);
+        }
+        draw();
+    })();
+    </script>
 </body>
 </html>
